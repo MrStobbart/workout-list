@@ -15,8 +15,8 @@ CREATE TABLE public."Workout" (
     description text NOT NULL,
     category text NOT NULL,
     "startDate" date NOT NULL,
-    created_at timestamp with time zone DEFAULT now() NOT NULL,
-    updated_at timestamp with time zone DEFAULT now() NOT NULL
+    "createdAt" timestamp with time zone DEFAULT now() NOT NULL,
+    "updatedAt" timestamp with time zone DEFAULT now() NOT NULL
 );
 CREATE TABLE public."WorkoutCategory" (
     value text NOT NULL
