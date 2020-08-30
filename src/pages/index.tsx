@@ -1,6 +1,7 @@
+import React from "react";
 import Head from "next/head";
-import styles from "../styles/Home.module.css";
 import gql from "graphql-tag";
+import styles from "../styles/Home.module.css";
 
 const test = gql`
   query MyQuery {
@@ -18,7 +19,7 @@ export default function Home() {
   return (
     <div className={styles.container}>
       <Head>
-        <title>Create Next App</title>
+        <title>Toastbrot</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
