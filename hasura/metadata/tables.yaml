@@ -1,0 +1,7 @@
+- table:
+    schema: public
+    name: Workout
+- table:
+    schema: public
+    name: WorkoutCategory
+  is_enum: true
