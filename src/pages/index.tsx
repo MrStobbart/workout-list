@@ -3,18 +3,6 @@ import Head from "next/head";
 import gql from "graphql-tag";
 import styles from "../styles/Home.module.css";
 
-const test = gql`
-  query MyQuery {
-    Workout {
-      description
-      startDate
-      id
-      name
-      category
-    }
-  }
-`;
-
 export default function Home() {
   return (
     <div className={styles.container}>

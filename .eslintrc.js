@@ -31,6 +31,7 @@ module.exports = {
     "react/jsx-props-no-spreading": ["error", { custom: "ignore" }],
     "prettier/prettier": "error",
     "@typescript-eslint/explicit-module-boundary-types": "off",
+    camelcase: "off",
   },
   settings: {
     "import/resolver": {

@@ -17,6 +17,19 @@ export enum WorkoutCategory_enum {
   c7 = "c7",
 }
 
+/**
+ * input type for inserting data into table "Workout"
+ */
+export interface Workout_insert_input {
+  category?: WorkoutCategory_enum | null;
+  createdAt?: Hasuratimestamptz | null;
+  description?: string | null;
+  id?: Hasurauuid | null;
+  name?: string | null;
+  startDate?: Hasuradate | null;
+  updatedAt?: Hasuratimestamptz | null;
+}
+
 //==============================================================
 // END Enums and Input Objects
 //==============================================================
