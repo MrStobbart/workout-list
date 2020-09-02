@@ -30,6 +30,8 @@ const generateFakeData = (): workout_insert_input[] => {
 };
 
 const saveFakeData = async () => {
+  console.log("Start seeding fake data");
+
   try {
     const { data } = await client.query<WorkoutCount>({
       query: WORKOUT_COUNT,
@@ -56,6 +58,7 @@ const saveFakeData = async () => {
     console.log(response.data);
   } catch (error) {
     console.error(error);
+    throw error;
   }
 };
 
