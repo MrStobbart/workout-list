@@ -45,3 +45,15 @@ export const GET_WORKOUTS = gql`
     }
   }
 `;
+
+export const GET_WORKOUT = gql`
+  query GetWorkout($workoutId: uuid!) {
+    workout(where: { id: { _eq: $workoutId } }) {
+      id
+      name
+      description
+      start_date
+      category
+    }
+  }
+`;

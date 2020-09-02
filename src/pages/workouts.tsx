@@ -76,14 +76,16 @@ export default function Workouts() {
 
   const limit = 20;
   const offset = (filters.page - 1) * limit;
+  const variables = {
+    offset,
+    limit,
+    categoryFilter: filters.categories,
+    earliestDate: filters.month?.clone().startOf("month").format("YYYY-MM-DD"),
+    latestDate: filters.month?.clone().endOf("month").format("YYYY-MM-DD"),
+  };
+
   const { loading, error, data } = useQuery<GetWorkouts>(GET_WORKOUTS, {
-    variables: {
-      offset,
-      limit,
-      categoryFilter: filters.categories,
-      earliestDate: filters.month?.clone().startOf("month"),
-      latestDate: filters.month?.clone().endOf("month"),
-    },
+    variables,
   });
   // TODO this is not optimal
   const count = data?.workout_aggregate.aggregate?.count || 1000;
@@ -111,6 +113,7 @@ export default function Workouts() {
           setFilters({
             ...filters,
             categories: categories.length === 0 ? undefined : categories,
+            page: 1,
           })
         }
         style={{ width: "350px" }}

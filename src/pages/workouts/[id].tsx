@@ -1,66 +1,35 @@
+/* eslint-disable jsx-a11y/anchor-is-valid */
 import React from "react";
-import Head from "next/head";
+import { Spin } from "antd";
+import { useQuery } from "@apollo/client";
+import { useRouter } from "next/dist/client/router";
+import Link from "next/link";
 import styles from "../../styles/workout.module.css";
+import { GetWorkout } from "../../../typings/generated/GetWorkout";
+import { GET_WORKOUT } from "../../apollo/queries";
 
-export default function Home() {
+export default function Workout() {
+  const { query } = useRouter();
+  const workoutId = query.id;
+
+  const { loading, error, data } = useQuery<GetWorkout>(GET_WORKOUT, {
+    variables: { workoutId },
+  });
+
+  if (loading) return <Spin />;
+  if (error) return <div>An Error occurred, try to reload the page</div>;
+  if (!data) return <div>Could not load workout with id {workoutId}</div>;
+
+  const { name, description, start_date, category } = data.workout[0];
   return (
     <div className={styles.container}>
-      <Head>
-        <title>Toastbrot</title>
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
-
-      <main className={styles.main}>
-        <h1 className={styles.title}>
-          Welcome to <a href="https://nextjs.org">Next.js!</a>
-        </h1>
-
-        <p className={styles.description}>
-          Get started by editing{" "}
-          <code className={styles.code}>pages/index.js</code>
-        </p>
-
-        <div className={styles.grid}>
-          <a href="https://nextjs.org/docs" className={styles.card}>
-            <h3>Documentation &rarr;</h3>
-            <p>Find in-depth information about Next.js features and API.</p>
-          </a>
-
-          <a href="https://nextjs.org/learn" className={styles.card}>
-            <h3>Learn &rarr;</h3>
-            <p>Learn about Next.js in an interactive course with quizzes!</p>
-          </a>
-
-          <a
-            href="https://github.com/vercel/next.js/tree/master/examples"
-            className={styles.card}
-          >
-            <h3>Examples &rarr;</h3>
-            <p>Discover and deploy boilerplate example Next.js projects.</p>
-          </a>
-
-          <a
-            href="https://vercel.com/import?filter=next.js&utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className={styles.card}
-          >
-            <h3>Deploy &rarr;</h3>
-            <p>
-              Instantly deploy your Next.js site to a public URL with Vercel.
-            </p>
-          </a>
-        </div>
-      </main>
-
-      <footer className={styles.footer}>
-        <a
-          href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Powered by{" "}
-          <img src="/vercel.svg" alt="Vercel Logo" className={styles.logo} />
-        </a>
-      </footer>
+      <Link href="/workouts">
+        <a>Zurück</a>
+      </Link>
+      <div>Name: {name}</div>
+      <div>Description: {description}</div>
+      <div>Start date: {start_date}</div>
+      <div>Category: {category}</div>
     </div>
   );
 }
