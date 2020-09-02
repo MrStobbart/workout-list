@@ -7,7 +7,7 @@
 // START Enums and Input Objects
 //==============================================================
 
-export enum WorkoutCategory_enum {
+export enum workout_category_enum {
   c1 = "c1",
   c2 = "c2",
   c3 = "c3",
@@ -18,16 +18,16 @@ export enum WorkoutCategory_enum {
 }
 
 /**
- * input type for inserting data into table "Workout"
+ * input type for inserting data into table "workout"
  */
-export interface Workout_insert_input {
-  category?: WorkoutCategory_enum | null;
-  createdAt?: Hasuratimestamptz | null;
+export interface workout_insert_input {
+  category?: workout_category_enum | null;
+  created_at?: Hasuratimestamptz | null;
   description?: string | null;
   id?: Hasurauuid | null;
   name?: string | null;
-  startDate?: Hasuradate | null;
-  updatedAt?: Hasuratimestamptz | null;
+  start_date?: Hasuradate | null;
+  updated_at?: Hasuratimestamptz | null;
 }
 
 //==============================================================

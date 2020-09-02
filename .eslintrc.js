@@ -32,6 +32,7 @@ module.exports = {
     "prettier/prettier": "error",
     "@typescript-eslint/explicit-module-boundary-types": "off",
     camelcase: "off",
+    "import/prefer-default-export": "off",
   },
   settings: {
     "import/resolver": {

@@ -1,58 +1,48 @@
 /* eslint-disable no-console */
-import gql from "graphql-tag";
 import faker from "faker";
 import client from "./apollo";
 import {
-  WorkoutCategory_enum,
-  Workout_insert_input,
+  workout_category_enum,
+  workout_insert_input,
 } from "../typings/generated/globalTypes";
-import { GetWorkouts } from "../typings/generated/GetWorkouts";
 import { InsertWorkouts } from "../typings/generated/InsertWorkouts";
+import { WORKOUT_COUNT } from "./apollo/queries";
+import { INSERT_WORKOUTS } from "./apollo/mutations";
+import { WorkoutCount } from "../typings/generated/WorkoutCount";
 
-const INSERT_WORKOUTS = gql`
-  mutation InsertWorkouts($workouts: [Workout_insert_input!]!) {
-    insert_Workout(objects: $workouts) {
-      returning {
-        id
-      }
-    }
-  }
-`;
-
-const GET_WORKOUTS = gql`
-  query GetWorkouts {
-    Workout {
-      id
-    }
-  }
-`;
-
-const getRandomCategory = (): WorkoutCategory_enum => {
-  const categories = Object.keys(WorkoutCategory_enum);
+const getRandomCategory = (): workout_category_enum => {
+  const categories = Object.keys(workout_category_enum);
   return categories[
     Math.floor(Math.random() * categories.length)
-  ] as WorkoutCategory_enum;
+  ] as workout_category_enum;
 };
 
 const getRandomDescription = () =>
   faker.lorem.words(faker.random.number({ min: 20, max: 120 }));
 
-const generateFakeData = (): Workout_insert_input[] => {
+const generateFakeData = (): workout_insert_input[] => {
   return [...Array(1000).keys()].map(() => ({
     name: faker.company.catchPhrase(),
     description: getRandomDescription(),
-    startDate: faker.date.future(),
+    start_date: faker.date.future(),
     category: getRandomCategory(),
   }));
 };
 
 const saveFakeData = async () => {
   try {
-    const { data } = await client.query<GetWorkouts>({
-      query: GET_WORKOUTS,
+    const { data } = await client.query<WorkoutCount>({
+      query: WORKOUT_COUNT,
     });
 
-    if (data && data.Workout && data.Workout.length >= 1000) {
+    // TODO fix up this mess
+    if (
+      data &&
+      data.workout_aggregate &&
+      data.workout_aggregate.aggregate &&
+      data.workout_aggregate.aggregate.count &&
+      data.workout_aggregate.aggregate.count >= 1000
+    ) {
       console.log("Data was already seeded, skip execution");
       return;
     }
@@ -63,7 +53,7 @@ const saveFakeData = async () => {
       mutation: INSERT_WORKOUTS,
       variables: { workouts: fakeData },
     });
-    console.log(response);
+    console.log(response.data);
   } catch (error) {
     console.error(error);
   }

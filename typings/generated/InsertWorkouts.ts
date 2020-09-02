@@ -3,32 +3,32 @@
 // @generated
 // This file was automatically generated and should not be edited.
 
-import { Workout_insert_input } from "./globalTypes";
+import { workout_insert_input } from "./globalTypes";
 
 // ====================================================
 // GraphQL mutation operation: InsertWorkouts
 // ====================================================
 
-export interface InsertWorkouts_insert_Workout_returning {
-  __typename: "Workout";
+export interface InsertWorkouts_insert_workout_returning {
+  __typename: "workout";
   id: Hasurauuid;
 }
 
-export interface InsertWorkouts_insert_Workout {
-  __typename: "Workout_mutation_response";
+export interface InsertWorkouts_insert_workout {
+  __typename: "workout_mutation_response";
   /**
    * data of the affected rows by the mutation
    */
-  returning: InsertWorkouts_insert_Workout_returning[];
+  returning: InsertWorkouts_insert_workout_returning[];
 }
 
 export interface InsertWorkouts {
   /**
-   * insert data into the table: "Workout"
+   * insert data into the table: "workout"
    */
-  insert_Workout: InsertWorkouts_insert_Workout | null;
+  insert_workout: InsertWorkouts_insert_workout | null;
 }
 
 export interface InsertWorkoutsVariables {
-  workouts: Workout_insert_input[];
+  workouts: workout_insert_input[];
 }
