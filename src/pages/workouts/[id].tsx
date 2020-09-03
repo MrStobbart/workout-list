@@ -1,9 +1,9 @@
 import React from "react";
 import { Spin, Divider, Row, Col, Button, Card } from "antd";
+import Title from "antd/lib/typography/Title";
 import { useQuery } from "@apollo/client";
 import { useRouter } from "next/dist/client/router";
 import Link from "next/link";
-import Title from "antd/lib/typography/Title";
 import styles from "../../styles/workout.module.css";
 import { GetWorkout } from "../../../typings/generated/GetWorkout";
 import { GET_WORKOUT } from "../../apollo/queries";

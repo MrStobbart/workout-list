@@ -2,8 +2,8 @@ import React, { useState } from "react";
 import Link from "next/link";
 import { Table, Button, Divider } from "antd";
 import Title from "antd/lib/typography/Title";
-import { useQuery } from "@apollo/client";
 import { ColumnsType } from "antd/lib/table";
+import { useQuery } from "@apollo/client";
 import styles from "../styles/workout.module.css";
 import { GET_WORKOUTS } from "../apollo/queries";
 import {

@@ -7,7 +7,6 @@ import { ApolloProvider } from "@apollo/client";
 import { Layout } from "antd";
 import client from "../apollo";
 import Header from "../components/header";
-import styles from "../styles/workout.module.css";
 
 const { Content } = Layout;
 
