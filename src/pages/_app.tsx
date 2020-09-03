@@ -16,7 +16,7 @@ function MyApp({ Component, pageProps }: AppProps) {
     <ApolloProvider client={client}>
       <Layout>
         <Header />
-        <Content className={styles.container} style={{ marginTop: 32 }}>
+        <Content style={{ marginTop: 32 }}>
           <Component {...pageProps} />
         </Content>
       </Layout>

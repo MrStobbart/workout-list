@@ -8,6 +8,20 @@ export default function Header() {
       className="site-page-header"
       subTitle="Find your workout now!"
       style={{ background: "#EFFEF3" }}
+      extra={[
+        <img
+          key="1"
+          src="/logo.svg"
+          style={{
+            height: "52px",
+            width: "auto",
+            float: "right",
+            margin: "-10px",
+          }}
+          alt="content"
+          width="100%"
+        />,
+      ]}
     />
   );
 }

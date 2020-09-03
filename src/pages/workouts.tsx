@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Link from "next/link";
-import { Pagination, Table, Button } from "antd";
+import { Table, Button, Divider } from "antd";
+import Title from "antd/lib/typography/Title";
 import { useQuery } from "@apollo/client";
 import { ColumnsType } from "antd/lib/table";
 import styles from "../styles/workout.module.css";
@@ -70,6 +71,8 @@ export default function Workouts() {
 
   return (
     <div className={styles.container}>
+      <Title level={4}>Available Workouts</Title>
+      <Divider />
       <FiltersComponent filters={filters} setFilters={setFilters} />
       <TablePagination
         filters={filters}
