@@ -23,7 +23,7 @@ export default function Workout() {
   const { name, description, start_date, category } = data.workout[0];
   return (
     <div className={styles.container}>
-      <Title level={3}>{name}</Title>
+      <Title level={4}>{name}</Title>
       <Divider />
       <Row gutter={[16, 32]}>
         <Col>

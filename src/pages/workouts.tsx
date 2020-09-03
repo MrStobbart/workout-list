@@ -16,17 +16,19 @@ const columns: ColumnsType<GetWorkouts_workout> = [
     title: "Name",
     dataIndex: "name",
     key: "name",
+    width: 450,
   },
   {
     title: "Start date",
     dataIndex: "start_date",
     key: "start_date",
-    width: "150px",
+    width: 150,
   },
   {
     title: "Category",
     dataIndex: "category",
     key: "category",
+    width: 80,
   },
   {
     title: "Action",
@@ -37,6 +39,7 @@ const columns: ColumnsType<GetWorkouts_workout> = [
         <Button type="dashed">Details</Button>
       </Link>
     ),
+    width: 100,
   },
 ];
 

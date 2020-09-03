@@ -4,12 +4,22 @@ import { AppProps } from "next/app";
 import "../styles/globals.css";
 import "antd/dist/antd.css";
 import { ApolloProvider } from "@apollo/client";
+import { Layout } from "antd";
 import client from "../apollo";
+import Header from "../components/header";
+import styles from "../styles/workout.module.css";
+
+const { Content } = Layout;
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
     <ApolloProvider client={client}>
-      <Component {...pageProps} />
+      <Layout>
+        <Header />
+        <Content className={styles.container} style={{ marginTop: 32 }}>
+          <Component {...pageProps} />
+        </Content>
+      </Layout>
     </ApolloProvider>
   );
 }
