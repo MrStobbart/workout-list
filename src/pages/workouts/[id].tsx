@@ -1,9 +1,9 @@
-/* eslint-disable jsx-a11y/anchor-is-valid */
 import React from "react";
-import { Spin } from "antd";
+import { Spin, Divider, Row, Col, Button, Card } from "antd";
 import { useQuery } from "@apollo/client";
 import { useRouter } from "next/dist/client/router";
 import Link from "next/link";
+import Title from "antd/lib/typography/Title";
 import styles from "../../styles/workout.module.css";
 import { GetWorkout } from "../../../typings/generated/GetWorkout";
 import { GET_WORKOUT } from "../../apollo/queries";
@@ -23,13 +23,41 @@ export default function Workout() {
   const { name, description, start_date, category } = data.workout[0];
   return (
     <div className={styles.container}>
+      <Title level={3}>{name}</Title>
+      <Divider />
+      <Row gutter={[16, 32]}>
+        <Col>
+          <Card
+            size="small"
+            title="Start date"
+            style={{ width: 300, textAlign: "center" }}
+          >
+            <p>{start_date}</p>
+          </Card>
+        </Col>
+        <Col>
+          <Card
+            size="small"
+            title="Category"
+            style={{ width: 300, textAlign: "center" }}
+          >
+            <p>{category}</p>
+          </Card>
+        </Col>
+      </Row>
+      <Row gutter={[16, 32]}>
+        <Card
+          size="small"
+          title="Description"
+          style={{ width: 616, textAlign: "center" }}
+        >
+          <p>{description}</p>
+        </Card>
+      </Row>
+      <Divider />
       <Link href="/workouts">
-        <a>Zurück</a>
+        <Button type="primary">Back</Button>
       </Link>
-      <div>Name: {name}</div>
-      <div>Description: {description}</div>
-      <div>Start date: {start_date}</div>
-      <div>Category: {category}</div>
     </div>
   );
 }
