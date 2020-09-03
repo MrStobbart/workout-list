@@ -56,7 +56,7 @@ export default function Workout() {
       </Row>
       <Divider />
       <Link href="/workouts">
-        <Button type="primary">Back</Button>
+        <Button type="default">Back</Button>
       </Link>
     </div>
   );

@@ -9,7 +9,8 @@ import {
   GetWorkouts_workout,
   GetWorkouts,
 } from "../../typings/generated/GetWorkouts";
-import FiltersComponent, { Filters } from "../components/filters";
+import FiltersComponent, { Filters } from "../components/tableFilters";
+import TablePagination from "../components/tablePagination";
 
 const columns: ColumnsType<GetWorkouts_workout> = [
   {
@@ -70,6 +71,13 @@ export default function Workouts() {
   return (
     <div className={styles.container}>
       <FiltersComponent filters={filters} setFilters={setFilters} />
+      <TablePagination
+        filters={filters}
+        setFilters={setFilters}
+        workoutCount={count}
+        limit={limit}
+        offset={offset}
+      />
       <Table
         style={{ marginTop: 30 }}
         rowKey="id"
@@ -79,20 +87,12 @@ export default function Workouts() {
         pagination={false}
         size="middle"
       />
-      <Pagination
-        style={{ marginTop: 30 }}
-        disabled={count <= limit}
-        defaultCurrent={1}
-        total={count}
-        pageSize={20}
-        onChange={(page) => setFilters({ ...filters, page })}
-        showSizeChanger={false}
-        showTotal={(total) => (
-          <div>
-            Workouts {offset + 1} - {Math.min(offset + limit, total)} from{" "}
-            {total}
-          </div>
-        )}
+      <TablePagination
+        filters={filters}
+        setFilters={setFilters}
+        workoutCount={count}
+        limit={limit}
+        offset={offset}
       />
     </div>
   );
