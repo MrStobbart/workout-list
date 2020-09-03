@@ -54,7 +54,7 @@ const saveFakeData = async () => {
     console.log(response.data);
   } catch (error) {
     console.error(error);
-    throw error;
+    process.exit(1);
   }
 };
 

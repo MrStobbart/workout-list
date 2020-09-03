@@ -1,7 +1,7 @@
 - table:
     schema: public
-    name: Workout
+    name: workout
 - table:
     schema: public
-    name: WorkoutCategory
+    name: workout_category
   is_enum: true
