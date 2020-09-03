@@ -1,12 +1,17 @@
 import React from "react";
-import { PageHeader } from "antd";
+import { PageHeader, Button } from "antd";
+import Link from "next/link";
 
 export default function Header() {
   return (
     <PageHeader
       title="Technical Workouts"
       className="site-page-header"
-      subTitle="Find your workout now!"
+      subTitle={
+        <Link href="/workouts">
+          <Button type="link">Find your workout now!</Button>
+        </Link>
+      }
       style={{ background: "#EFFEF3" }}
       extra={[
         <img
