@@ -1,5 +1,10 @@
+import React from "react";
 import moment from "moment";
-import { monthIsNotWithinNextTwelveMonths } from "./tableFilters";
+import renderer from "react-test-renderer";
+import TableFilters, {
+  monthIsNotWithinNextTwelveMonths,
+} from "../tableFilters";
+import { workout_category_enum } from "../../../typings/generated/globalTypes";
 
 describe("monthIsNotWithinNextTwelveMonths", () => {
   it("return false for dates within the next twelve months", () => {
@@ -27,5 +32,23 @@ describe("monthIsNotWithinNextTwelveMonths", () => {
     expect(monthIsNotWithinNextTwelveMonths(moment().add(2, "years"))).toBe(
       true
     );
+  });
+});
+
+describe("tableFilter component", () => {
+  it("renders correctly", () => {
+    const setFilters = jest.fn();
+    const component = renderer.create(
+      <TableFilters
+        filters={{
+          page: 1,
+          categories: [workout_category_enum.c1],
+          month: moment(),
+        }}
+        setFilters={setFilters}
+      />
+    );
+
+    expect(component.toJSON()).toMatchSnapshot();
   });
 });

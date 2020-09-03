@@ -1,9 +1,8 @@
 import React, { useState } from "react";
 import Link from "next/link";
-import { Table, Button, Divider } from "antd";
-import Title from "antd/lib/typography/Title";
-import { ColumnsType } from "antd/lib/table";
+import { Pagination, Table, Button } from "antd";
 import { useQuery } from "@apollo/client";
+import { ColumnsType } from "antd/lib/table";
 import styles from "../styles/workout.module.css";
 import { GET_WORKOUTS } from "../apollo/queries";
 import {
@@ -11,26 +10,23 @@ import {
   GetWorkouts,
 } from "../../typings/generated/GetWorkouts";
 import FiltersComponent, { Filters } from "../components/tableFilters";
-import TablePagination from "../components/tablePagination";
 
 const columns: ColumnsType<GetWorkouts_workout> = [
   {
     title: "Name",
     dataIndex: "name",
     key: "name",
-    width: 450,
   },
   {
     title: "Start date",
     dataIndex: "start_date",
     key: "start_date",
-    width: 150,
+    width: "150px",
   },
   {
     title: "Category",
     dataIndex: "category",
     key: "category",
-    width: 80,
   },
   {
     title: "Action",
@@ -38,10 +34,9 @@ const columns: ColumnsType<GetWorkouts_workout> = [
     key: "action",
     render: (workout) => (
       <Link href="/workouts/[id]" as={`/workouts/${workout.id}`}>
-        <Button type="dashed">Details</Button>
+        <Button type="link">Details</Button>
       </Link>
     ),
-    width: 100,
   },
 ];
 
@@ -71,16 +66,7 @@ export default function Workouts() {
 
   return (
     <div className={styles.container}>
-      <Title level={4}>Available Workouts</Title>
-      <Divider />
       <FiltersComponent filters={filters} setFilters={setFilters} />
-      <TablePagination
-        filters={filters}
-        setFilters={setFilters}
-        workoutCount={count}
-        limit={limit}
-        offset={offset}
-      />
       <Table
         style={{ marginTop: 30 }}
         rowKey="id"
@@ -90,12 +76,20 @@ export default function Workouts() {
         pagination={false}
         size="middle"
       />
-      <TablePagination
-        filters={filters}
-        setFilters={setFilters}
-        workoutCount={count}
-        limit={limit}
-        offset={offset}
+      <Pagination
+        style={{ marginTop: 30 }}
+        disabled={count <= limit}
+        defaultCurrent={1}
+        total={count}
+        pageSize={20}
+        onChange={(page) => setFilters({ ...filters, page })}
+        showSizeChanger={false}
+        showTotal={(total) => (
+          <div>
+            Workouts {offset + 1} - {Math.min(offset + limit, total)} from{" "}
+            {total}
+          </div>
+        )}
       />
     </div>
   );

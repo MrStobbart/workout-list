@@ -4,7 +4,6 @@ import Title from "antd/lib/typography/Title";
 import { useQuery } from "@apollo/client";
 import { useRouter } from "next/dist/client/router";
 import Link from "next/link";
-import styles from "../../styles/workout.module.css";
 import { GetWorkout } from "../../../typings/generated/GetWorkout";
 import { GET_WORKOUT } from "../../apollo/queries";
 
@@ -22,7 +21,7 @@ export default function Workout() {
 
   const { name, description, start_date, category } = data.workout[0];
   return (
-    <div className={styles.container}>
+    <div className="container">
       <Title level={4}>Workout: {name}</Title>
       <Divider />
       <Row gutter={[16, 32]}>

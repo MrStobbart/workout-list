@@ -1,0 +1,187 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`tableFilter component renders correctly 1`] = `
+<div
+  className="ant-row"
+  style={
+    Object {
+      "marginLeft": -8,
+      "marginRight": -8,
+    }
+  }
+>
+  <div
+    className="ant-col ant-col-8 gutter-row"
+    style={
+      Object {
+        "paddingLeft": 8,
+        "paddingRight": 8,
+      }
+    }
+  >
+    <div
+      className="ant-picker"
+      onMouseUp={[Function]}
+      style={
+        Object {
+          "width": "135px",
+        }
+      }
+    >
+      <div
+        className="ant-picker-input"
+      >
+        <input
+          autoComplete="off"
+          onBlur={[Function]}
+          onChange={[Function]}
+          onFocus={[Function]}
+          onKeyDown={[Function]}
+          onMouseDown={[Function]}
+          placeholder="Select month"
+          readOnly={true}
+          size={12}
+          title=""
+          value=""
+        />
+        <span
+          className="ant-picker-suffix"
+        >
+          <span
+            aria-label="calendar"
+            className="anticon anticon-calendar"
+            role="img"
+          >
+            <svg
+              aria-hidden="true"
+              className=""
+              data-icon="calendar"
+              fill="currentColor"
+              focusable="false"
+              height="1em"
+              viewBox="64 64 896 896"
+              width="1em"
+            >
+              <path
+                d="M880 184H712v-64c0-4.4-3.6-8-8-8h-56c-4.4 0-8 3.6-8 8v64H384v-64c0-4.4-3.6-8-8-8h-56c-4.4 0-8 3.6-8 8v64H144c-17.7 0-32 14.3-32 32v664c0 17.7 14.3 32 32 32h736c17.7 0 32-14.3 32-32V216c0-17.7-14.3-32-32-32zm-40 656H184V460h656v380zM184 392V256h128v48c0 4.4 3.6 8 8 8h56c4.4 0 8-3.6 8-8v-48h256v48c0 4.4 3.6 8 8 8h56c4.4 0 8-3.6 8-8v-48h128v136H184z"
+              />
+            </svg>
+          </span>
+        </span>
+      </div>
+    </div>
+  </div>
+  <div
+    className="ant-col ant-col-8 gutter-row"
+    style={
+      Object {
+        "paddingLeft": 8,
+        "paddingRight": 8,
+      }
+    }
+  >
+    <div
+      className="ant-select ant-select-multiple ant-select-show-search"
+      onBlur={[Function]}
+      onFocus={[Function]}
+      onKeyDown={[Function]}
+      onKeyUp={[Function]}
+      onMouseDown={[Function]}
+      style={
+        Object {
+          "width": "350px",
+        }
+      }
+    >
+      <div
+        className="ant-select-selector"
+        onMouseDown={[Function]}
+      >
+        <span
+          className="ant-select-selection-item"
+        >
+          <span
+            className="ant-select-selection-item-content"
+          >
+            c1
+          </span>
+          <span
+            aria-hidden={true}
+            className="ant-select-selection-item-remove"
+            onClick={[Function]}
+            onMouseDown={[Function]}
+            style={
+              Object {
+                "WebkitUserSelect": "none",
+                "userSelect": "none",
+              }
+            }
+            unselectable="on"
+          >
+            <span
+              aria-label="close"
+              className="anticon anticon-close"
+              role="img"
+            >
+              <svg
+                aria-hidden="true"
+                className=""
+                data-icon="close"
+                fill="currentColor"
+                focusable="false"
+                height="1em"
+                viewBox="64 64 896 896"
+                width="1em"
+              >
+                <path
+                  d="M563.8 512l262.5-312.9c4.4-5.2.7-13.1-6.1-13.1h-79.8c-4.7 0-9.2 2.1-12.3 5.7L511.6 449.8 295.1 191.7c-3-3.6-7.5-5.7-12.3-5.7H203c-6.8 0-10.5 7.9-6.1 13.1L459.4 512 196.9 824.9A7.95 7.95 0 00203 838h79.8c4.7 0 9.2-2.1 12.3-5.7l216.5-258.1 216.5 258.1c3 3.6 7.5 5.7 12.3 5.7h79.8c6.8 0 10.5-7.9 6.1-13.1L563.8 512z"
+                />
+              </svg>
+            </span>
+          </span>
+        </span>
+        <span
+          className="ant-select-selection-search"
+          style={
+            Object {
+              "width": 0,
+            }
+          }
+        >
+          <input
+            aria-activedescendant="undefined_list_0"
+            aria-autocomplete="list"
+            aria-controls="undefined_list"
+            aria-haspopup="listbox"
+            aria-owns="undefined_list"
+            autoComplete="off"
+            className="ant-select-selection-search-input"
+            onChange={[Function]}
+            onCompositionEnd={[Function]}
+            onCompositionStart={[Function]}
+            onKeyDown={[Function]}
+            onMouseDown={[Function]}
+            onPaste={[Function]}
+            readOnly={true}
+            role="combobox"
+            style={
+              Object {
+                "opacity": 0,
+              }
+            }
+            unselectable="on"
+            value=""
+          />
+          <span
+            aria-hidden={true}
+            className="ant-select-selection-search-mirror"
+          >
+            
+             
+          </span>
+        </span>
+      </div>
+    </div>
+  </div>
+</div>
+`;

@@ -21,11 +21,13 @@ export const monthIsNotWithinNextTwelveMonths = (date: Moment): boolean => {
 
 export interface Filters {
   month: Moment | null;
-  categories: string[] | undefined;
+  categories: workout_category_enum[] | undefined;
   page: number;
 }
 
-const availableCategories = Object.keys(workout_category_enum);
+const availableCategories = Object.keys(
+  workout_category_enum
+) as workout_category_enum[];
 
 interface Props {
   filters: Filters;

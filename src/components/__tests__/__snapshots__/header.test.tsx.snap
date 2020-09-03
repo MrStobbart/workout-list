@@ -1,0 +1,50 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`header component renders correctly 1`] = `
+<div
+  className="ant-page-header site-page-header ant-page-header-ghost"
+  style={
+    Object {
+      "background": "#EFFEF3",
+    }
+  }
+>
+  <div
+    className="ant-page-header-heading"
+  >
+    <div
+      className="ant-page-header-heading-left"
+    >
+      <span
+        className="ant-page-header-heading-title"
+        title="Technical Workouts"
+      >
+        Technical Workouts
+      </span>
+      <span
+        className="ant-page-header-heading-sub-title"
+        title="Find your workout now!"
+      >
+        Find your workout now!
+      </span>
+    </div>
+    <span
+      className="ant-page-header-heading-extra"
+    >
+      <img
+        alt="content"
+        src="/logo.svg"
+        style={
+          Object {
+            "float": "right",
+            "height": "52px",
+            "margin": "-10px",
+            "width": "auto",
+          }
+        }
+        width="100%"
+      />
+    </span>
+  </div>
+</div>
+`;
