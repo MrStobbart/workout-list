@@ -37,13 +37,9 @@ const saveFakeData = async () => {
       query: WORKOUT_COUNT,
     });
 
-    // TODO fix up this mess
     if (
-      data &&
-      data.workout_aggregate &&
-      data.workout_aggregate.aggregate &&
-      data.workout_aggregate.aggregate.count &&
-      data.workout_aggregate.aggregate.count >= 1000
+      data?.workout_aggregate.aggregate?.count &&
+      data?.workout_aggregate.aggregate?.count >= 1000
     ) {
       console.log("Data was already seeded, skip execution");
       return;

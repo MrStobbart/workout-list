@@ -1,9 +1,6 @@
-// TODO try to not use these exceptions
-/* eslint-disable react/display-name */
-/* eslint-disable jsx-a11y/anchor-is-valid */
 import React, { useState } from "react";
 import Link from "next/link";
-import { Pagination, Table } from "antd";
+import { Pagination, Table, Button } from "antd";
 import { useQuery } from "@apollo/client";
 import { ColumnsType } from "antd/lib/table";
 import styles from "../styles/workout.module.css";
@@ -37,7 +34,7 @@ const columns: ColumnsType<GetWorkouts_workout> = [
     key: "action",
     render: (workout) => (
       <Link href="/workouts/[id]" as={`/workouts/${workout.id}`}>
-        <a>Details</a>
+        <Button type="dashed">Details</Button>
       </Link>
     ),
   },
