@@ -32,7 +32,7 @@ export default function Workout() {
     <div style={container}>
       <Title level={4}>Workout: {name}</Title>
       <Divider />
-      <Row gutter={[16, 32]}>
+      <Row gutter={[16, 32]} justify="center">
         <Col>
           <Card
             size="small"
