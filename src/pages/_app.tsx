@@ -3,7 +3,6 @@ import React from "react";
 import { AppProps } from "next/app";
 import "../styles/globals.css";
 import "antd/dist/antd.css";
-import "../styles/workout.module.css";
 import { ApolloProvider } from "@apollo/client";
 import { Layout } from "antd";
 import client from "../apollo";

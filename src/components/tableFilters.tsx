@@ -1,7 +1,6 @@
 import React from "react";
 import { Row, Col, DatePicker, Select } from "antd";
 import moment, { Moment } from "moment";
-
 import { workout_category_enum } from "../../typings/generated/globalTypes";
 
 export const monthIsNotWithinNextTwelveMonths = (date: Moment): boolean => {

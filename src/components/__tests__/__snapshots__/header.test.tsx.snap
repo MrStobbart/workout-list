@@ -23,9 +23,17 @@ exports[`header component renders correctly 1`] = `
       </span>
       <span
         className="ant-page-header-heading-sub-title"
-        title="Find your workout now!"
       >
-        Find your workout now!
+        <button
+          className="ant-btn ant-btn-link"
+          onClick={[Function]}
+          onMouseEnter={[Function]}
+          type="button"
+        >
+          <span>
+            Find your workout now!
+          </span>
+        </button>
       </span>
     </div>
     <span

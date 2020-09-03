@@ -1,15 +1,16 @@
 import React, { useState } from "react";
 import Link from "next/link";
-import { Pagination, Table, Button } from "antd";
+import { Table, Button } from "antd";
 import { useQuery } from "@apollo/client";
 import { ColumnsType } from "antd/lib/table";
-import styles from "../styles/workout.module.css";
+import { container } from "../styles/workout";
 import { GET_WORKOUTS } from "../apollo/queries";
 import {
   GetWorkouts_workout,
   GetWorkouts,
 } from "../../typings/generated/GetWorkouts";
 import FiltersComponent, { Filters } from "../components/tableFilters";
+import TablePagination from "../components/tablePagination";
 
 const columns: ColumnsType<GetWorkouts_workout> = [
   {
@@ -62,11 +63,18 @@ export default function Workouts() {
   });
   const count = data?.workout_aggregate.aggregate?.count || 1000;
 
-  if (error) return `Error! ${error.message}`;
+  if (error) return <div style={container}>Error! {error.message}</div>;
 
   return (
-    <div className={styles.container}>
+    <div style={container}>
       <FiltersComponent filters={filters} setFilters={setFilters} />
+      <TablePagination
+        filters={filters}
+        setFilters={setFilters}
+        workoutCount={count}
+        offset={offset}
+        limit={limit}
+      />
       <Table
         style={{ marginTop: 30 }}
         rowKey="id"
@@ -76,20 +84,12 @@ export default function Workouts() {
         pagination={false}
         size="middle"
       />
-      <Pagination
-        style={{ marginTop: 30 }}
-        disabled={count <= limit}
-        defaultCurrent={1}
-        total={count}
-        pageSize={20}
-        onChange={(page) => setFilters({ ...filters, page })}
-        showSizeChanger={false}
-        showTotal={(total) => (
-          <div>
-            Workouts {offset + 1} - {Math.min(offset + limit, total)} from{" "}
-            {total}
-          </div>
-        )}
+      <TablePagination
+        filters={filters}
+        setFilters={setFilters}
+        workoutCount={count}
+        offset={offset}
+        limit={limit}
       />
     </div>
   );

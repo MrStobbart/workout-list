@@ -4,6 +4,7 @@ import Title from "antd/lib/typography/Title";
 import { useQuery } from "@apollo/client";
 import { useRouter } from "next/dist/client/router";
 import Link from "next/link";
+import { container } from "../../styles/workout";
 import { GetWorkout } from "../../../typings/generated/GetWorkout";
 import { GET_WORKOUT } from "../../apollo/queries";
 
@@ -16,12 +17,19 @@ export default function Workout() {
   });
 
   if (loading) return <Spin />;
-  if (error) return <div>An Error occurred, try to reload the page</div>;
-  if (!data) return <div>Could not load workout with id {workoutId}</div>;
-
+  if (error) {
+    return (
+      <div style={container}>An Error occurred, try to reload the page</div>
+    );
+  }
+  if (!data) {
+    return (
+      <div style={container}>Could not load workout with id {workoutId}</div>
+    );
+  }
   const { name, description, start_date, category } = data.workout[0];
   return (
-    <div className="container">
+    <div style={container}>
       <Title level={4}>Workout: {name}</Title>
       <Divider />
       <Row gutter={[16, 32]}>

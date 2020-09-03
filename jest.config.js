@@ -9,4 +9,5 @@ module.exports = {
       tsConfig: "tsconfig.jest.json",
     },
   },
+  testPathIgnorePatterns: [".next"],
 };

@@ -3,10 +3,10 @@ import renderer from "react-test-renderer";
 import { useRouter } from "next/dist/client/router";
 import { mocked } from "ts-jest/utils";
 import { MockedProvider } from "@apollo/client/testing";
-import Workout from "../[id]";
-import { GET_WORKOUT } from "../../../apollo/queries";
-import { GetWorkout_workout } from "../../../../typings/generated/GetWorkout";
-import { workout_category_enum } from "../../../../typings/generated/globalTypes";
+import Workout from "../../pages/workouts/[id]";
+import { GET_WORKOUT } from "../../apollo/queries";
+import { GetWorkout_workout } from "../../../typings/generated/GetWorkout";
+import { workout_category_enum } from "../../../typings/generated/globalTypes";
 
 const workout: GetWorkout_workout = {
   __typename: "workout",
