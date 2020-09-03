@@ -3,8 +3,7 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React, { useState } from "react";
 import Link from "next/link";
-import moment, { Moment } from "moment";
-import { Pagination, Table, DatePicker, Select } from "antd";
+import { Pagination, Table } from "antd";
 import { useQuery } from "@apollo/client";
 import { ColumnsType } from "antd/lib/table";
 import styles from "../styles/workout.module.css";
@@ -13,7 +12,7 @@ import {
   GetWorkouts_workout,
   GetWorkouts,
 } from "../../typings/generated/GetWorkouts";
-import { workout_category_enum } from "../../typings/generated/globalTypes";
+import FiltersComponent, { Filters } from "../components/filters";
 
 const columns: ColumnsType<GetWorkouts_workout> = [
   {
@@ -44,29 +43,6 @@ const columns: ColumnsType<GetWorkouts_workout> = [
   },
 ];
 
-const isDateWithinNextTwelveMonths = (date: Moment): boolean => {
-  if (!date) return true;
-  const now = moment();
-
-  const isPastMonth = date.month() < now.month();
-  const isUpcomingMonth = date.month() > now.month();
-  const isThisMonth = date.month() === now.month();
-  const isThisYear = date.year() === now.year();
-  const isNextYear = date.year() === now.year() + 1;
-
-  if (isThisYear && (isThisMonth || isUpcomingMonth)) return false;
-  if (isNextYear && (isThisMonth || isPastMonth)) return false;
-  return true;
-};
-
-interface Filters {
-  month: Moment | null;
-  categories: string[] | undefined;
-  page: number;
-}
-
-const availableCategories = Object.keys(workout_category_enum);
-
 export default function Workouts() {
   const [filters, setFilters] = useState<Filters>({
     month: null,
@@ -87,44 +63,15 @@ export default function Workouts() {
   const { loading, error, data } = useQuery<GetWorkouts>(GET_WORKOUTS, {
     variables,
   });
-  // TODO this is not optimal
   const count = data?.workout_aggregate.aggregate?.count || 1000;
 
   if (error) return `Error! ${error.message}`;
 
-  const filteredOptions = availableCategories.filter((category) =>
-    filters.categories ? !filters.categories.includes(category) : true
-  );
   return (
     <div className={styles.container}>
-      <DatePicker
-        picker="month"
-        format="MMM YYYY"
-        inputReadOnly
-        allowClear
-        disabledDate={isDateWithinNextTwelveMonths}
-        onChange={(month) => setFilters({ ...filters, month })}
-      />
-      <Select
-        mode="multiple"
-        placeholder="Select categories"
-        value={filters.categories}
-        onChange={(categories) =>
-          setFilters({
-            ...filters,
-            categories: categories.length === 0 ? undefined : categories,
-            page: 1,
-          })
-        }
-        style={{ width: "350px" }}
-      >
-        {filteredOptions.map((item) => (
-          <Select.Option key={item} value={item}>
-            {item}
-          </Select.Option>
-        ))}
-      </Select>
+      <FiltersComponent filters={filters} setFilters={setFilters} />
       <Table
+        style={{ marginTop: 30 }}
         rowKey="id"
         columns={columns}
         dataSource={data?.workout}
@@ -133,6 +80,7 @@ export default function Workouts() {
         size="middle"
       />
       <Pagination
+        style={{ marginTop: 30 }}
         disabled={count <= limit}
         defaultCurrent={1}
         total={count}
