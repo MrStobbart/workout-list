@@ -4,7 +4,7 @@ import moment, { Moment } from "moment";
 
 import { workout_category_enum } from "../../typings/generated/globalTypes";
 
-const isDateWithinNextTwelveMonths = (date: Moment): boolean => {
+export const monthIsNotWithinNextTwelveMonths = (date: Moment): boolean => {
   if (!date) return true;
   const now = moment();
 
@@ -32,7 +32,7 @@ interface Props {
   setFilters: (newFilters: Filters) => void;
 }
 
-export default function FiltersComponent(props: Props) {
+export default function TableFilters(props: Props) {
   const { filters, setFilters } = props;
   const filteredOptions = availableCategories.filter((category) =>
     filters.categories ? !filters.categories.includes(category) : true
@@ -46,7 +46,7 @@ export default function FiltersComponent(props: Props) {
           format="MMM YYYY"
           inputReadOnly
           allowClear
-          disabledDate={isDateWithinNextTwelveMonths}
+          disabledDate={monthIsNotWithinNextTwelveMonths}
           onChange={(month) => setFilters({ ...filters, month, page: 1 })}
         />
       </Col>

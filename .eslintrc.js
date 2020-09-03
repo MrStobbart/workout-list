@@ -34,6 +34,14 @@ module.exports = {
     camelcase: "off",
     "import/prefer-default-export": "off",
     "react/display-name": "off",
+    "import/no-extraneous-dependencies": [
+      "error",
+      {
+        devDependencies: true,
+        optionalDependencies: false,
+        peerDependencies: false,
+      },
+    ],
   },
   settings: {
     "import/resolver": {
